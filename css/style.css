@@ -1,6 +1,3 @@
-/* ===============================
-   1. Переменные проекта
-   =============================== */
 :root {
   --color-bg: #ffffff;
   --color-text: #222222;
@@ -28,20 +25,9 @@
   --container-width: 1100px;
 }
 
-/* ===============================
-   2. Базовые стили
-   =============================== */
+
 * {
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-:target {
-  outline: 2px dashed var(--color-primary);
-  outline-offset: 4px;
 }
 
 body {
@@ -66,9 +52,7 @@ footer {
   background-color: var(--color-surface);
 }
 
-/* ===============================
-   3. Общие элементы интерфейса
-   =============================== */
+
 a {
   color: var(--color-primary);
 }
@@ -82,9 +66,7 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-/* ===============================
-   4. Компоненты страницы
-   =============================== */
+
 
 .header {
   position: sticky;
@@ -95,10 +77,8 @@ a:focus-visible {
   padding: var(--space-lg); 
 }
 
-/* Компенсация высоты липкого хедера */
+
 main {
-  /* Отступ равен высоте хедера с его паддингами. 
-     Если высота хедера изменилась, поправьте это значение */
   margin-top: calc(var(--space-lg) * 2 + 1.5em); 
 }
 
@@ -362,25 +342,6 @@ main {
   background-color: var(--color-success-bg);
 }
 
-
-
-
-.breadcrumbs {
-  max-width: var(--container-width);
-  margin: 0 auto var(--space-md);
-  font-size: 14px;
-  color: var(--color-muted);
-}
-
-.breadcrumbs a {
-  color: var(--color-primary);
-}
-
-.breadcrumbs span::before {
-  content: " / ";
-  color: var(--color-muted);
-}
-
 /* ===============================
    6. Адаптивность
    =============================== */
@@ -415,64 +376,27 @@ main {
   }
 }
 
-.catalog-layout {
+.breadcrumbs {
   max-width: var(--container-width);
-  margin: 0 auto var(--space-xl);
-  display: grid;
-  grid-template-columns: 260px 1fr; 
-  gap: var(--space-lg);
-  padding: 0 var(--space-lg); 
+  margin: 0 auto var(--space-md);
+  font-size: 14px;
+  color: var(--color-muted);
 }
 
-
-.catalog-filters {
-  background-color: var(--color-surface);
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
+.breadcrumbs a {
+  color: var(--color-primary);
 }
 
-.catalog-filters h2 {
-  margin-top: 0;
-  font-size: 1.2rem;
+.breadcrumbs span::before {
+  content: " / ";
+  color: var(--color-muted);
 }
 
-.filters-form fieldset {
-  border: none;
-  padding: 0;
-  margin: 0 0 var(--space-md) 0;
+html {
+  scroll-behavior: smooth;
 }
 
-.filters-form legend {
-  font-weight: bold;
-  margin-bottom: var(--space-sm);
-}
-
-.filters-form label {
-  display: block;
-  margin-bottom: var(--space-xs);
-  cursor: pointer;
-}
-
-.price-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.price-inputs input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-}
-
-@media (max-width: 768px) {
-  .catalog-layout {
-    grid-template-columns: 1fr; 
-  }
-  
-  .catalog-filters {
-    order: -1; 
-  }
+:target {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
 }
