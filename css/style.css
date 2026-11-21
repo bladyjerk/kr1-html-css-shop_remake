@@ -24,13 +24,36 @@
   --color-accent: oklch(0.5 0.17 28);
   --color-danger: oklch(0.55 0.2 27);
   --color-border: oklch(0.85 0.03 80);
+  --color-surface-hover: oklch(0.94 0.05 86);
+  --color-bg-glow: oklch(0.995 0.03 92 / 0.9);
 
+  color-scheme: light;
   --gradient-gold: linear-gradient(110deg, oklch(0.46 0.1 62), oklch(0.58 0.12 76) 35%, oklch(0.7 0.13 84) 55%, oklch(0.44 0.09 58) 100%);
   --shadow-gold: 0 10px 40px -14px oklch(0.55 0.11 72 / 0.5);
 
   --radius: 2px;
   --header-h: 4rem;
   --container: 80rem;
+}
+
+/* Тёмная тема: включается атрибутом data-theme="dark" на <html> */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: oklch(0.17 0.012 60);
+  --color-text: oklch(0.93 0.02 85);
+  --color-surface: oklch(0.215 0.015 60);
+  --color-surface-alt: oklch(0.26 0.02 62);
+  --color-muted: oklch(0.73 0.03 80);
+  --color-primary: oklch(0.82 0.12 84);
+  --color-primary-contrast: oklch(0.18 0.01 60);
+  --color-glow: oklch(0.88 0.13 88);
+  --color-accent: oklch(0.68 0.17 30);
+  --color-danger: oklch(0.7 0.18 27);
+  --color-border: oklch(0.34 0.03 70);
+  --color-surface-hover: oklch(0.27 0.035 70);
+  --color-bg-glow: oklch(0.32 0.05 78 / 0.5);
+  --gradient-gold: linear-gradient(110deg, oklch(0.74 0.11 72), oklch(0.92 0.13 88) 45%, oklch(0.72 0.1 68));
+  --shadow-gold: 0 10px 40px -14px oklch(0.82 0.12 84 / 0.45);
 }
 
 /* 2. Сброс и база --------------------------------------------------------- */
@@ -48,7 +71,7 @@ body {
   line-height: 1.65;
   color: var(--color-text);
   background-color: var(--color-bg);
-  background-image: radial-gradient(ellipse 90% 520px at 50% 0%, oklch(0.995 0.03 92 / 0.9), transparent 70%);
+  background-image: radial-gradient(ellipse 90% 520px at 50% 0%, var(--color-bg-glow), transparent 70%);
   background-repeat: no-repeat;
 }
 
@@ -252,6 +275,25 @@ button { cursor: pointer; background: none; border: 0; padding: 0; }
   font-size: 0.65rem;
   font-weight: 700;
 }
+
+/* Переключатель темы: ромб как у логотипа, внутри солнце или полумесяц */
+.theme-toggle { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; color: var(--color-primary); }
+.theme-toggle__frame {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid color-mix(in oklab, var(--color-primary) 65%, transparent);
+  transform: rotate(45deg);
+  transition: transform 0.6s ease, background 0.4s, border-color 0.4s;
+}
+.theme-toggle:hover .theme-toggle__frame { transform: rotate(225deg); background: color-mix(in oklab, var(--color-primary) 14%, transparent); border-color: var(--color-primary); }
+.theme-toggle__icons { position: relative; display: grid; place-items: center; width: 1.1rem; height: 1.1rem; transform: rotate(-45deg); transition: transform 0.6s ease; }
+.theme-toggle:hover .theme-toggle__icons { transform: rotate(-225deg); }
+.theme-toggle__icon { position: absolute; width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: opacity 0.4s, scale 0.5s, rotate 0.6s; }
+.theme-toggle__icon--moon { opacity: 0; scale: 0.4; rotate: -90deg; }
+:root[data-theme="dark"] .theme-toggle__icon--sun { opacity: 0; scale: 0.4; rotate: 90deg; }
+:root[data-theme="dark"] .theme-toggle__icon--moon { opacity: 1; scale: 1; rotate: 0deg; }
 
 .site-footer {
   position: relative;
@@ -466,7 +508,7 @@ button { cursor: pointer; background: none; border: 0; padding: 0; }
 .product__actions { display: grid; gap: 0.75rem; margin-top: 1.25rem; }
 
 .gallery__stage { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid var(--color-border); background: linear-gradient(160deg, oklch(0.3 0.03 60), oklch(0.18 0.02 55)); }
-.gallery__img { width: 100%; height: 100%; object-fit: cover; transition: filter 0.7s, opacity 0.3s; }
+.gallery__img { width: 100%; height: 100%; object-fit: contain; transition: filter 0.7s, opacity 0.3s; }
 .gallery__glow {
   position: absolute;
   inset: 0;

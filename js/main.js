@@ -10,6 +10,27 @@
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+  /* Тема: светлая / тёмная ---------------------------------------------- */
+  function initTheme() {
+    const toggle = $('[data-theme-toggle]');
+    if (!toggle) return;
+    const root = document.documentElement;
+    const label = () => {
+      const dark = root.dataset.theme === 'dark';
+      toggle.setAttribute('aria-pressed', String(dark));
+      toggle.title = dark ? 'Включить светлую тему' : 'Включить тёмную тему';
+    };
+    label();
+    toggle.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.classList.add('theme-transition');
+      root.dataset.theme = next;
+      try { localStorage.setItem('trv.theme', next); } catch { /* хранилище недоступно */ }
+      label();
+      setTimeout(() => root.classList.remove('theme-transition'), 500);
+    });
+  }
+
   /* Мобильное меню ------------------------------------------------------- */
   function initNav() {
     const toggle = $('[data-nav-toggle]');
@@ -263,6 +284,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     initNav();
     initReveal();
     initPointerEffects();

@@ -14,7 +14,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/features.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('trv.theme'); } catch (e) {}
+      if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
   <script src="js/main.js" defer></script>
   <script src="js/shop.js" defer></script>
 </head>
@@ -35,6 +43,9 @@
         </ul>
       </nav>
       <div class="site-header__actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Сменить тему оформления" aria-pressed="false">
+          <span class="theme-toggle__frame"><span class="theme-toggle__icons"><svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7L7 17M17 7l1.7-1.7"/></svg><svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 14.6A8 8 0 019.4 4.5a8 8 0 1010.1 10.1z"/><path d="M17 3.5v2.6M15.7 4.8h2.6"/></svg></span></span>
+        </button>
         <button class="icon-btn" type="button" data-cart-open aria-label="Корзина">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
           <span class="icon-btn__badge" data-cart-count hidden>0</span>

@@ -56,7 +56,7 @@
 [data-spotlight]:hover::before,
 [data-spotlight]:hover::after { opacity: 1; }
 
-.product-card:hover { background-image: linear-gradient(180deg, var(--color-surface) 40%, oklch(0.94 0.05 86)); }
+.product-card:hover { background-image: linear-gradient(180deg, var(--color-surface) 40%, var(--color-surface-hover)); }
 .product-card__img { transition: transform 0.9s cubic-bezier(0.22, 0.8, 0.3, 1), filter 0.6s; }
 .product-card:hover .product-card__img { transform: scale(1.07); filter: saturate(1.12); }
 .product-card__title-link { background: var(--gradient-gold) no-repeat left bottom / 0% 1px; transition: background-size 0.5s ease, color 0.3s; }
@@ -94,7 +94,7 @@
   10%  { opacity: 1; }
   100% { transform: translate3d(var(--drift, 20px), -110vh, 0); opacity: 0; }
 }
-.embers { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.embers { position: absolute; inset: 0; overflow: hidden; pointer-events: none; -webkit-mask-image: linear-gradient(to top, transparent 4%, #000 30%); mask-image: linear-gradient(to top, transparent 4%, #000 30%); }
 .embers__spark {
   position: absolute;
   bottom: 0;
@@ -143,6 +143,11 @@
 .back-to-top--visible:hover { translate: 0 -4px; border-color: var(--color-primary); color: var(--color-glow); }
 .back-to-top__icon { width: 2.25rem; height: 2.25rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 6px var(--color-glow)); transition: scale 0.5s; }
 .back-to-top:hover .back-to-top__icon { scale: 1.1; }
+
+/* Плавная смена темы (класс ставится скриптом на 0,5 с) */
+.theme-transition, .theme-transition *, .theme-transition *::before, .theme-transition *::after {
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease, fill 0.45s ease !important;
+}
 
 /* 6. Отключение анимаций -------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
