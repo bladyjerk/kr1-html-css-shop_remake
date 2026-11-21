@@ -18,12 +18,6 @@
 - `images/` — логотип, баннер и фото фигурок (`images/figures/<id>-1..4.jpg`);
 - `sitemap.xml`, `.gitignore`.
 
-## Фотографии фигурок
-
-В исходном проекте фото хранились как ссылки (`*.asset.json`), поэтому сами файлы нужно
-положить в `images/figures/` под именами `malenia-1.jpg … messmer-4.jpg` (по 4 фото на фигурку:
-malenia, radahn, godfrey, mohg, maliketh, messmer). Пока файлов нет, карточки показывают тёмный фон.
-
 ## БЭМ
 
 Блоки: `site-header`, `site-nav`, `logo`, `hero`, `section`, `feature`, `stat`, `material`,
