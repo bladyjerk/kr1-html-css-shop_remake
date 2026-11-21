@@ -1,206 +1,335 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarnished Relics Vault — статуи Elden Ring</title>
+  <meta name="description" content="Лимитированные коллекционные статуи полубогов Elden Ring: ручная роспись, нумерация, доставка в деревянных ящиках.">
+  <meta property="og:title" content="Tarnished Relics Vault — статуи Elden Ring">
+  <meta property="og:description" content="Лимитированные коллекционные статуи полубогов Elden Ring: ручная роспись, нумерация, доставка в деревянных ящиках.">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Учебный интернет-магазин">
-<meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
-<meta property="og:image" content="https://bladyjerk.github.io/kr1-html-css-shop/images/preview.jpg">
-  <title>Каталог товаров</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/features.css">
+  <script>document.documentElement.classList.add('js');</script>
   <script src="js/main.js" defer></script>
+  <script src="js/shop.js" defer></script>
 </head>
-<body>
-<header class="header">
-    <div class="header__container">
-        <a href="index.html" class="logo">ShopProject</a>
-        <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
-                <li class="nav__item"><a href="catalog.html" class="nav__link">Каталог</a></li>
-                <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
-                <li class="nav__item"><a href="#advantages" class="nav__link">Преимущества</a></li>
-                <li class="nav__item"><a href="#popular" class="nav__link">Популярные товары</a></li>
-                <li class="nav__item"><a href="#contacts" class="nav__link">Обратная связь</a></li>
-            </ul>
-        </nav>
+<body class="page" data-page="home">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="logo" href="index.html" aria-label="Tarnished Relics — на главную">
+        <span class="logo__mark"><span class="logo__letters">TR</span></span>
+        <span class="logo__text">Tarnished Relics</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+        <li class="site-nav__item"><a class="site-nav__link" href="index.html" aria-current="page">Главная</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="about.html">О нас</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="cabinet.html">Кабинет</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <button class="icon-btn" type="button" data-cart-open aria-label="Корзина">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+          <span class="icon-btn__badge" data-cart-count hidden>0</span>
+        </button>
+        <button class="icon-btn site-header__burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Меню">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
     </div>
-</header>
+  </header>
 
-  <main>
+  <main class="page__main">
     <section class="hero">
-      <h1 class="hero__title">Учебный интернет-магазин</h1>
-      <p class="hero__text">
-        Это стартовая страница учебного frontend-проекта.
-        В дальнейшем на её основе будет разработан многостраничный сайт
-        интернет-магазина или каталога услуг.
-      </p>
-      <a class="button" href="#popular">Перейти к товарам</a>
-    </section>
-
-    <section class="section" id="advantages">
-      <h2 class="section__title">Преимущества проекта</h2>
-
-      <ul class="advantages-list">
-        <li class="advantages-list__item">понятная HTML-структура;</li>
-        <li class="advantages-list__item">семантические блоки страницы;</li>
-        <li class="advantages-list__item">подключение внешнего CSS-файла;</li>
-        <li class="advantages-list__item">подготовка к разработке многостраничного сайта.</li>
-      </ul>
-    </section>
-
-    <section class="section section--products" id="popular">
-      <h2 class="section__title">Популярные товары</h2>
-
-      <div class="product-grid">
-        <article class="product-card">
-          <h3 class="product-card__title">Товар 1</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 1000 руб.</p>
-          <button class="button product-card__button" type="button" data-product="Товар 1">
-            Заказать
-          </button>
-        </article>
-
-        <article class="product-card">
-          <h3 class="product-card__title">Товар 2</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 1500 руб.</p>
-          <button class="button product-card__button" type="button" data-product="Товар 2">
-            Заказать
-          </button>
-        </article>
-
-        <article class="product-card">
-          <h3 class="product-card__title">Товар 3</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 2000 руб.</p>
-          <button class="button product-card__button" type="button" data-product="Товар 3">
-            Заказать
-          </button>
-        </article>
+      <img class="hero__bg" src="images/hero-erdtree.jpg" alt="" width="1920" height="1080" fetchpriority="high">
+      <div class="hero__overlay"></div>
+      <div class="embers" data-embers="28" aria-hidden="true"></div>
+      <div class="hero__inner container">
+        <p class="hero__kicker">Статуи Elden Ring музейного уровня</p>
+        <h1 class="hero__title gradient-text">Реликвии полубогов</h1>
+        <p class="hero__text">Лимитированные номерные статуи величайших владык Междуземья — ручная роспись, деревянный ящик, доставка по миру.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="catalog.html">Смотреть каталог</a>
+          <a class="btn btn--outline btn--ghost" href="about.html">О магазине</a>
+        </div>
       </div>
     </section>
 
-    <aside class="info-block">
-      <h2 class="info-block__title">Информация для студентов</h2>
-      <p class="info-block__text">
-        На следующих практических занятиях этот проект будет расширяться:
-        появятся формы, модальное окно, дополнительные страницы, Flex/Grid,
-        БЭМ-структура и адаптивная версия сайта.
-      </p>
-    </aside>
+    <section class="section" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="section__kicker">Наш стандарт</p>
+          <h2 class="section__title gradient-text" id="features-title">Каждая статуя — как музейный экспонат</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="feature frame" data-reveal data-spotlight>
+            <span class="feature__mark"><span>I</span></span>
+            <h3 class="feature__title gradient-text">Ручная роспись</h3>
+            <p class="feature__text">Каждую статую завершают мастера-художники.</p>
+          </article>
+          <article class="feature frame" data-reveal data-spotlight>
+            <span class="feature__mark"><span>II</span></span>
+            <h3 class="feature__title gradient-text">Нумерация</h3>
+            <p class="feature__text">Латунная табличка и сертификат подлинности.</p>
+          </article>
+          <article class="feature frame" data-reveal data-spotlight>
+            <span class="feature__mark"><span>III</span></span>
+            <h3 class="feature__title gradient-text">Ящик и страховка</h3>
+            <p class="feature__text">Отправка в деревянных ящиках с поролоном.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-label="Магазин в цифрах">
+      <div class="container">
+        <div class="stats-grid grid grid--4">
+          <div class="stat frame" data-reveal data-spotlight><p class="stat__value gradient-text" data-count="6">6</p><p class="stat__label">реликвий в хранилище</p></div>
+          <div class="stat frame" data-reveal data-spotlight><p class="stat__value gradient-text" data-count="100" data-suffix="%">100%</p><p class="stat__label">ручная роспись</p></div>
+          <div class="stat frame" data-reveal data-spotlight><p class="stat__value gradient-text" data-count="25" data-suffix="%">25%</p><p class="stat__label">депозит на предзаказ</p></div>
+          <div class="stat frame" data-reveal data-spotlight><p class="stat__value gradient-text" data-count="2">2</p><p class="stat__label">масштаба: 1:4 и 1:6</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Коллекция</p>
+          <h2 class="section__title gradient-text" id="featured-title">Избранные реликвии</h2>
+          <p class="section__lead">Три статуи, с которых лучше начать знакомство с хранилищем.</p>
+        </div>
+        <div class="grid grid--3">
+        <article class="product-card" data-reveal data-spotlight data-tilt data-product-card data-scale="1:4" data-material="resin" data-availability="last-units" data-price="118680">
+          <a class="product-card__media" href="product-malenia.html" tabindex="-1" aria-hidden="true">
+            <img class="product-card__img" src="images/figures/malenia-1.jpg" alt="" width="600" height="800" loading="lazy">
+            <span class="product-card__shade"></span>
+            <span class="product-card__badge product-card__badge--status badge badge--status">Последние экземпляры</span>
+            <span class="product-card__badge product-card__badge--scale badge badge--scale">1:4</span>
+          </a>
+          <div class="product-card__body">
+            <p class="product-card__kicker">Богиня гнили</p>
+            <h3 class="product-card__title"><a class="product-card__title-link" href="product-malenia.html">Маления, Клинок Микеллы</a></h3>
+            <p class="product-card__meta">DTalon Studio · Смола · 1/500</p>
+            <div class="product-card__footer">
+              <span class="product-card__price gradient-text">118 680 ₽</span>
+              <button class="btn btn--outline btn--small" type="button" data-add-to-cart data-id="malenia" data-name="Маления, Клинок Микеллы" data-price="118680" data-image="images/figures/malenia-1.jpg" data-scale="1:4" data-material="Смола">В корзину</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-reveal data-spotlight data-tilt data-product-card data-scale="1:4" data-material="polystone" data-availability="in-stock" data-price="173880">
+          <a class="product-card__media" href="product-radahn.html" tabindex="-1" aria-hidden="true">
+            <img class="product-card__img" src="images/figures/radahn-1.jpg" alt="" width="600" height="800" loading="lazy">
+            <span class="product-card__shade"></span>
+            <span class="product-card__badge product-card__badge--status badge badge--status">В наличии</span>
+            <span class="product-card__badge product-card__badge--scale badge badge--scale">1:4</span>
+          </a>
+          <div class="product-card__body">
+            <p class="product-card__kicker">Покоритель звёзд</p>
+            <h3 class="product-card__title"><a class="product-card__title-link" href="product-radahn.html">Генерал Радан</a></h3>
+            <p class="product-card__meta">Sword Wing Studio · Полистоун · 1/350</p>
+            <div class="product-card__footer">
+              <span class="product-card__price gradient-text">173 880 ₽</span>
+              <button class="btn btn--outline btn--small" type="button" data-add-to-cart data-id="radahn" data-name="Генерал Радан" data-price="173880" data-image="images/figures/radahn-1.jpg" data-scale="1:4" data-material="Полистоун">В корзину</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card" data-reveal data-spotlight data-tilt data-product-card data-scale="1:4" data-material="bronze" data-availability="pre-order" data-price="133400">
+          <a class="product-card__media" href="product-godfrey.html" tabindex="-1" aria-hidden="true">
+            <img class="product-card__img" src="images/figures/godfrey-1.jpg" alt="" width="600" height="800" loading="lazy">
+            <span class="product-card__shade"></span>
+            <span class="product-card__badge product-card__badge--status badge badge--status">Предзаказ</span>
+            <span class="product-card__badge product-card__badge--scale badge badge--scale">1:4</span>
+          </a>
+          <div class="product-card__body">
+            <p class="product-card__kicker">Хоара Лу, воитель</p>
+            <h3 class="product-card__title"><a class="product-card__title-link" href="product-godfrey.html">Годфри, первый Лорд Элден</a></h3>
+            <p class="product-card__meta">Thunder Z Studio · Холодная бронза · 1/400</p>
+            <div class="product-card__footer">
+              <span class="product-card__price gradient-text">133 400 ₽</span>
+              <button class="btn btn--outline btn--small" type="button" data-add-to-cart data-id="godfrey" data-name="Годфри, первый Лорд Элден" data-price="133400" data-image="images/figures/godfrey-1.jpg" data-scale="1:4" data-material="Холодная бронза">В корзину</button>
+            </div>
+          </div>
+        </article>
+        </div>
+        <p class="section__more"><a class="btn btn--outline" href="catalog.html">Весь каталог</a></p>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="scales-title">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="section__kicker">Масштаб</p>
+          <h2 class="section__title gradient-text" id="scales-title">Два масштаба — два характера</h2>
+          <p class="section__lead">От монументальных диорам до компактных фигур для полки.</p>
+        </div>
+        <div class="grid grid--2">
+          <article class="scale-card" data-reveal data-spotlight>
+            <p class="scale-card__value gradient-text">1:4</p>
+            <h3 class="scale-card__title">Монументальные диорамы</h3>
+            <p class="scale-card__text">Высота от 68 до 82 см. Маления, Радан, Годфри и Малекит — главные акценты коллекции, которые заполняют целую витрину.</p>
+          </article>
+          <article class="scale-card" data-reveal data-spotlight>
+            <p class="scale-card__value gradient-text">1:6</p>
+            <h3 class="scale-card__title">Компактные фигуры</h3>
+            <p class="scale-card__text">Высота от 38 до 46 см. Мог и Мессмер: та же детализация, но на полке они займут заметно меньше места.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="materials-title">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="section__kicker">Материалы</p>
+          <h2 class="section__title gradient-text" id="materials-title">Материал подбирают под фигуру</h2>
+          <p class="section__lead">Вес и блеск статуи зависят от того, из чего она отлита.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="material" data-reveal data-spotlight>
+            <div class="material__swatch material__swatch--polystone"></div>
+            <h3 class="material__title">Полистоун</h3>
+            <p class="material__text">Прочный композит с точной проработкой деталей — хорош для крупных диорам со сложными позами.</p>
+            <p class="material__meta">Радан · Малекит</p>
+          </article>
+          <article class="material" data-reveal data-spotlight>
+            <div class="material__swatch material__swatch--resin"></div>
+            <h3 class="material__title">Смола</h3>
+            <p class="material__text">Тонкая детализация и прозрачные эффекты: языки пламени, капли крови, аура.</p>
+            <p class="material__meta">Маления · Мог · Мессмер</p>
+          </article>
+          <article class="material" data-reveal data-spotlight>
+            <div class="material__swatch material__swatch--bronze"></div>
+            <h3 class="material__title">Холодная бронза</h3>
+            <p class="material__text">Тяжёлая, холодная на ощупь отливка с металлическим блеском и благородной патиной.</p>
+            <p class="material__meta">Годфри</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-labelledby="promo-title">
+      <div class="container">
+        <div class="promo" data-reveal data-spotlight>
+          <p class="promo__value gradient-text" aria-hidden="true">25%</p>
+          <div>
+            <h2 class="promo__title" id="promo-title">Предзаказ без полной оплаты</h2>
+            <p class="promo__text">Для предзаказа достаточно депозита 25% — так редкая статуя не уйдёт мимо. Переключить способ оплаты можно прямо в корзине.</p>
+            <a class="btn btn--primary" href="catalog.html">Выбрать реликвию</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="studios-title">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="section__kicker">Мастера</p>
+          <h2 class="section__title gradient-text" id="studios-title">Студии-производители</h2>
+          <p class="section__lead">Мы работаем только с теми, чьи скульпты выдерживают лампу коллекционера.</p>
+        </div>
+        <ul class="studios">
+          <li class="studios__item" data-reveal>DTalon Studio</li>
+          <li class="studios__item" data-reveal>Sword Wing Studio</li>
+          <li class="studios__item" data-reveal>Thunder Z Studio</li>
+          <li class="studios__item" data-reveal>Geeky Brushers</li>
+          <li class="studios__item" data-reveal>Ashes Studio</li>
+          <li class="studios__item" data-reveal>Hundian Studio</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta frame" data-reveal>
+          <h2 class="cta__title gradient-text" id="cta-title">Готовы найти свою реликвию?</h2>
+          <p class="cta__text">Загляните в каталог или напишите нам — мы отвечаем в течение рабочего дня.</p>
+          <div class="cta__actions">
+            <a class="btn btn--primary" href="catalog.html">Открыть каталог</a>
+            <a class="btn btn--outline" href="contacts.html">Связаться с нами</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer" id="contacts">
-    <div class="footer__container">
-      <p class="footer__copyright">&copy; 2026 Учебный проект. Все права защищены.</p>
-      <p class="footer__discipline">Дисциплина: Фронтенд и бэкенд разработка</p>
+  <footer class="site-footer">
+    <div class="site-footer__grid container">
+      <div class="site-footer__col">
+        <a class="logo" href="index.html" aria-label="Tarnished Relics — на главную">
+          <span class="logo__mark"><span class="logo__letters">TR</span></span>
+          <span class="logo__text logo__text--visible">Tarnished Relics</span>
+        </a>
+        <p class="site-footer__text">Статуи Elden Ring музейного уровня: ручная роспись, нумерация и доставка в деревянных ящиках.</p>
+      </div>
+      <nav class="site-footer__col" aria-label="Разделы">
+        <h2 class="site-footer__title gradient-text">Разделы</h2>
+        <ul class="site-footer__list">
+          <li><a class="site-footer__link" href="index.html">Главная</a></li>
+          <li><a class="site-footer__link" href="catalog.html">Каталог</a></li>
+          <li><a class="site-footer__link" href="about.html">О нас</a></li>
+          <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          <li><a class="site-footer__link" href="cabinet.html">Кабинет</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <h2 class="site-footer__title gradient-text">Контакты</h2>
+        <ul class="site-footer__list">
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>г. Москва, Реликвийный пер., д. 12</span></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><a class="site-footer__link" href="tel:+74950000000">+7 (495) 000-00-00</a></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Пн–Пт 10:00–19:00 · Сб 11:00–16:00 · Вс — выходной</span></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg><a class="site-footer__link" href="mailto:hello@tarnishedrelics.example">hello@tarnishedrelics.example</a></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4 18-7z"/></svg><a class="site-footer__link" href="https://t.me/tarnished_relics" target="_blank" rel="noopener noreferrer">Telegram: @tarnished_relics</a></li>
+          <li class="site-footer__item"><span class="site-footer__vk" aria-hidden="true">VK</span><a class="site-footer__link" href="https://vk.com/tarnished_relics" target="_blank" rel="noopener noreferrer">VK: vk.com/tarnished_relics</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="site-footer__bottom-inner container">
+        <p>© 2026 Tarnished Relics Vault. Все права защищены.</p>
+        <p>Фанатский концепт магазина. Elden Ring © FromSoftware / Bandai Namco.</p>
+      </div>
     </div>
   </footer>
 
-  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+  <button class="back-to-top" type="button" data-back-to-top aria-label="Вернуться наверх" title="Вернуться наверх">
+    <svg class="back-to-top__icon" viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M6 24C3 11 13 3 24 3s21 8 18 21" stroke-width="1.3" opacity="0.55"/>
+      <path d="M12 22C11 14 17 8 24 8s13 6 12 14" stroke-width="1.1" opacity="0.4"/>
+      <path d="M24 43c1-6 0-11 0-17" stroke-width="2.8"/>
+      <path d="M24 43c-4 0-7 1-11 3M24 43c4 0 7 1 11 3M24 43c-1 2-1 3-1 4M24 43c1 2 1 3 1 4" stroke-width="1.6"/>
+      <path d="M24 28c-4-4-10-5-15-11M24 28c4-4 10-5 15-11" stroke-width="1.9"/>
+      <path d="M24 25c-2-6-5-10-8-17M24 25c2-6 5-10 8-17M24 24V6" stroke-width="1.9"/>
+      <path d="M16 23c-3 0-5-1-7-3M32 23c3 0 5-1 7-3M19 15c-3 0-5-2-6-4M29 15c3 0 5-2 6-4" stroke-width="1.2"/>
+      <g fill="currentColor" stroke="none"><circle cx="9" cy="17" r="1.3"/><circle cx="39" cy="17" r="1.3"/><circle cx="16" cy="8" r="1.3"/><circle cx="32" cy="8" r="1.3"/><circle cx="24" cy="5.5" r="1.5"/></g>
+    </svg>
+  </button>
 
-    <form class="order-form" id="order-form" action="#" method="post" novalidate>
-      <input id="selected-product" name="selected-product" type="hidden">
-
-      <div class="form-field">
-        <label class="form-field__label" for="order-name">Имя</label>
-        <input
-          class="form-field__input"
-          id="order-name"
-          name="name"
-          type="text"
-          placeholder="Введите ваше имя"
-          minlength="2"
-          autocomplete="given-name"
-          required
-        >
+  <dialog class="cart" data-cart aria-labelledby="cart-title">
+    <div class="cart__inner">
+      <header class="cart__header">
+        <h2 class="cart__title gradient-text" id="cart-title">Корзина</h2>
+        <button class="cart__close" type="button" data-cart-close aria-label="Закрыть корзину"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </header>
+      <p class="cart__empty" data-cart-empty>Ваша корзина пуста.</p>
+      <ul class="cart__list" data-cart-list></ul>
+      <div class="cart__footer" data-cart-footer hidden>
+        <div class="pay-toggle" role="group" aria-label="Способ оплаты">
+          <button class="pay-toggle__option pay-toggle__option--active" type="button" data-payment="full" aria-pressed="true">Полная оплата</button>
+          <button class="pay-toggle__option" type="button" data-payment="deposit" aria-pressed="false">Депозит 25%</button>
+        </div>
+        <p class="cart__line"><span>Итого</span><span data-cart-total></span></p>
+        <p class="cart__line cart__line--due"><span>К оплате сейчас</span><span class="gradient-text" data-cart-due></span></p>
+        <a class="btn btn--primary btn--block" href="cabinet.html#checkout">Оформить заказ</a>
       </div>
-
-      <div class="form-field">
-        <label class="form-field__label" for="order-email">E-mail</label>
-        <input
-          class="form-field__input"
-          id="order-email"
-          name="email"
-          type="email"
-          placeholder="example@mail.ru"
-          autocomplete="email"
-          required
-        >
-      </div>
-
-      <div class="form-field">
-        <label class="form-field__label" for="order-phone">Телефон</label>
-        <input
-          class="form-field__input"
-          id="order-phone"
-          name="phone"
-          type="tel"
-          inputmode="tel"
-          placeholder="+7 (900) 000-00-00"
-          pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-          required
-        >
-        <small class="form-field__hint">Формат: +7 (900) 000-00-00</small>
-      </div>
-
-      <div class="form-field">
-        <label class="form-field__label" for="order-date">Дата связи</label>
-        <input
-          class="form-field__input"
-          id="order-date"
-          name="date"
-          type="date"
-        >
-      </div>
-
-      <div class="form-field">
-        <label class="form-field__label" for="order-topic">Тема заявки</label>
-        <select class="form-field__select" id="order-topic" name="topic" required>
-          <option value="">Выберите тему</option>
-          <option value="product">Заказ товара</option>
-          <option value="consultation">Консультация</option>
-          <option value="delivery">Доставка</option>
-        </select>
-      </div>
-
-      <div class="form-field">
-        <label class="form-field__label" for="order-comment">Комментарий</label>
-        <textarea
-          class="form-field__textarea"
-          id="order-comment"
-          name="comment"
-          rows="4"
-          placeholder="Укажите дополнительную информацию"
-        ></textarea>
-      </div>
-
-      <div class="form-field form-field--checkbox">
-        <label class="form-field__checkbox-label">
-          <input
-            class="form-field__checkbox"
-            id="order-agreement"
-            name="agreement"
-            type="checkbox"
-            required
-          >
-          Я согласен на обработку данных
-        </label>
-      </div>
-
-      <div class="form-actions">
-        <button class="button form-actions__button" type="button" id="close-order-dialog">Закрыть</button>
-        <button class="button form-actions__button" type="submit">Отправить заявку</button>
-      </div>
-    </form>
+    </div>
   </dialog>
-
-  <p class="success-message" id="success-message" hidden>
-    Форма успешно отправлена!
-  </p>
 </body>
 </html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Кабинет — Tarnished Relics Vault</title>
+  <meta name="description" content="Личный кабинет: оформление заказа, список заказов и отслеживание статуса статуи.">
+  <meta property="og:title" content="Кабинет — Tarnished Relics Vault">
+  <meta property="og:description" content="Личный кабинет: оформление заказа, список заказов и отслеживание статуса статуи.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/features.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
+  <script src="js/shop.js" defer></script>
+</head>
+<body class="page" data-page="cabinet">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="logo" href="index.html" aria-label="Tarnished Relics — на главную">
+        <span class="logo__mark"><span class="logo__letters">TR</span></span>
+        <span class="logo__text">Tarnished Relics</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+        <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="about.html">О нас</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="cabinet.html" aria-current="page">Кабинет</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <button class="icon-btn" type="button" data-cart-open aria-label="Корзина">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+          <span class="icon-btn__badge" data-cart-count hidden>0</span>
+        </button>
+        <button class="icon-btn site-header__burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Меню">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page__main">
+    <nav class="breadcrumbs container" aria-label="Хлебные крошки">
+      <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="index.html">Главная</a></li>
+        <li class="breadcrumbs__item" aria-current="page">Кабинет</li>
+      </ol>
+    </nav>
+    <div class="container">
+      <header class="page-head">
+        <p class="page-head__kicker">Личный кабинет</p>
+        <h1 class="page-head__title gradient-text">Кабинет</h1>
+        <p class="page-head__lead">Оформляйте заказы, следите за статусом своей реликвии и отслеживайте посылку по номеру.</p>
+      </header>
+
+      <div class="cabinet">
+        <section class="panel" aria-labelledby="auth-title">
+          <h2 class="panel__title gradient-text" id="auth-title">Вход</h2>
+          <form class="form panel__body" action="#" novalidate data-auth-guest data-login-form>
+            <label class="form__label">Email
+              <input class="form__input" type="email" name="email" autocomplete="email">
+              <span class="form__error" data-error-for="login-email"></span>
+            </label>
+            <label class="form__label">Пароль
+              <input class="form__input" type="password" name="password" autocomplete="current-password">
+              <span class="form__error" data-error-for="login-password"></span>
+            </label>
+            <button class="btn btn--primary btn--block" type="submit">Войти</button>
+          </form>
+          <div class="panel__body" data-auth-user hidden>
+            <p class="panel__text">Добро пожаловать, Погасший</p>
+            <p data-user-email></p>
+            <button class="btn btn--outline btn--small" type="button" data-logout>Выйти</button>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="track-title">
+          <h2 class="panel__title gradient-text" id="track-title">Отследить заказ</h2>
+          <form class="track panel__body" action="#" data-track-form>
+            <label class="form__label track__field">Номер заказа
+              <input class="form__input" type="text" name="number" placeholder="TRV-123456" required>
+            </label>
+            <button class="btn btn--primary" type="submit">Отследить</button>
+          </form>
+          <div class="track__result" data-track-result aria-live="polite"></div>
+        </section>
+
+        <section class="panel cabinet__wide" id="checkout" data-checkout aria-labelledby="checkout-title">
+          <h2 class="panel__title gradient-text" id="checkout-title">Оформление заказа</h2>
+          <div class="panel__body" data-checkout-empty>
+            <p class="panel__text">В корзине пока ничего нет. <a class="cabinet__link" href="catalog.html">Выберите реликвию в каталоге</a>.</p>
+          </div>
+          <form class="form panel__body" action="#" novalidate data-checkout-form hidden>
+            <div class="cabinet__summary" data-checkout-summary></div>
+            <div class="form__row">
+              <label class="form__label">ФИО
+                <input class="form__input" type="text" name="name" autocomplete="name">
+                <span class="form__error" data-error-for="name"></span>
+              </label>
+              <label class="form__label">Email
+                <input class="form__input" type="email" name="email" autocomplete="email">
+                <span class="form__error" data-error-for="email"></span>
+              </label>
+              <label class="form__label">Телефон
+                <input class="form__input" type="tel" name="phone" autocomplete="tel">
+                <span class="form__error" data-error-for="phone"></span>
+              </label>
+              <label class="form__label">Страна
+                <input class="form__input" type="text" name="country" value="Россия" autocomplete="country-name">
+              </label>
+              <label class="form__label">Город
+                <input class="form__input" type="text" name="city" autocomplete="address-level2">
+                <span class="form__error" data-error-for="city"></span>
+              </label>
+              <label class="form__label">Индекс
+                <input class="form__input" type="text" name="zip" autocomplete="postal-code">
+              </label>
+            </div>
+            <label class="form__label">Адрес
+              <input class="form__input" type="text" name="address" autocomplete="street-address">
+              <span class="form__error" data-error-for="address"></span>
+            </label>
+            <label class="form__label">Комментарий
+              <textarea class="form__input form__input--area" name="comment" rows="3"></textarea>
+            </label>
+            <fieldset class="choice">
+              <legend class="choice__legend form__label">Доставка</legend>
+              <label class="choice__option"><input class="choice__input" type="radio" name="delivery" value="courier" checked> Курьер, деревянный ящик</label>
+              <label class="choice__option"><input class="choice__input" type="radio" name="delivery" value="pickup"> Пункт выдачи</label>
+            </fieldset>
+            <button class="btn btn--primary btn--block" type="submit">Подтвердить заказ</button>
+          </form>
+          <div class="form__success panel__body" data-order-success role="status" hidden>
+            <p class="form__success-title">Заказ оформлен</p>
+            <p>Номер вашего заказа: <strong data-order-number></strong>. Сохраните его, чтобы отслеживать статус.</p>
+          </div>
+        </section>
+
+        <section class="panel cabinet__wide" id="orders" aria-labelledby="orders-title">
+          <h2 class="panel__title gradient-text" id="orders-title">Мои заказы</h2>
+          <p class="panel__text" data-orders-empty>Заказов пока нет.</p>
+          <div class="orders" data-orders></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__grid container">
+      <div class="site-footer__col">
+        <a class="logo" href="index.html" aria-label="Tarnished Relics — на главную">
+          <span class="logo__mark"><span class="logo__letters">TR</span></span>
+          <span class="logo__text logo__text--visible">Tarnished Relics</span>
+        </a>
+        <p class="site-footer__text">Статуи Elden Ring музейного уровня: ручная роспись, нумерация и доставка в деревянных ящиках.</p>
+      </div>
+      <nav class="site-footer__col" aria-label="Разделы">
+        <h2 class="site-footer__title gradient-text">Разделы</h2>
+        <ul class="site-footer__list">
+          <li><a class="site-footer__link" href="index.html">Главная</a></li>
+          <li><a class="site-footer__link" href="catalog.html">Каталог</a></li>
+          <li><a class="site-footer__link" href="about.html">О нас</a></li>
+          <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          <li><a class="site-footer__link" href="cabinet.html">Кабинет</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <h2 class="site-footer__title gradient-text">Контакты</h2>
+        <ul class="site-footer__list">
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>г. Москва, Реликвийный пер., д. 12</span></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><a class="site-footer__link" href="tel:+74950000000">+7 (495) 000-00-00</a></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Пн–Пт 10:00–19:00 · Сб 11:00–16:00 · Вс — выходной</span></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg><a class="site-footer__link" href="mailto:hello@tarnishedrelics.example">hello@tarnishedrelics.example</a></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4 18-7z"/></svg><a class="site-footer__link" href="https://t.me/tarnished_relics" target="_blank" rel="noopener noreferrer">Telegram: @tarnished_relics</a></li>
+          <li class="site-footer__item"><span class="site-footer__vk" aria-hidden="true">VK</span><a class="site-footer__link" href="https://vk.com/tarnished_relics" target="_blank" rel="noopener noreferrer">VK: vk.com/tarnished_relics</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="site-footer__bottom-inner container">
+        <p>© 2026 Tarnished Relics Vault. Все права защищены.</p>
+        <p>Фанатский концепт магазина. Elden Ring © FromSoftware / Bandai Namco.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" data-back-to-top aria-label="Вернуться наверх" title="Вернуться наверх">
+    <svg class="back-to-top__icon" viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M6 24C3 11 13 3 24 3s21 8 18 21" stroke-width="1.3" opacity="0.55"/>
+      <path d="M12 22C11 14 17 8 24 8s13 6 12 14" stroke-width="1.1" opacity="0.4"/>
+      <path d="M24 43c1-6 0-11 0-17" stroke-width="2.8"/>
+      <path d="M24 43c-4 0-7 1-11 3M24 43c4 0 7 1 11 3M24 43c-1 2-1 3-1 4M24 43c1 2 1 3 1 4" stroke-width="1.6"/>
+      <path d="M24 28c-4-4-10-5-15-11M24 28c4-4 10-5 15-11" stroke-width="1.9"/>
+      <path d="M24 25c-2-6-5-10-8-17M24 25c2-6 5-10 8-17M24 24V6" stroke-width="1.9"/>
+      <path d="M16 23c-3 0-5-1-7-3M32 23c3 0 5-1 7-3M19 15c-3 0-5-2-6-4M29 15c3 0 5-2 6-4" stroke-width="1.2"/>
+      <g fill="currentColor" stroke="none"><circle cx="9" cy="17" r="1.3"/><circle cx="39" cy="17" r="1.3"/><circle cx="16" cy="8" r="1.3"/><circle cx="32" cy="8" r="1.3"/><circle cx="24" cy="5.5" r="1.5"/></g>
+    </svg>
+  </button>
+
+  <dialog class="cart" data-cart aria-labelledby="cart-title">
+    <div class="cart__inner">
+      <header class="cart__header">
+        <h2 class="cart__title gradient-text" id="cart-title">Корзина</h2>
+        <button class="cart__close" type="button" data-cart-close aria-label="Закрыть корзину"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </header>
+      <p class="cart__empty" data-cart-empty>Ваша корзина пуста.</p>
+      <ul class="cart__list" data-cart-list></ul>
+      <div class="cart__footer" data-cart-footer hidden>
+        <div class="pay-toggle" role="group" aria-label="Способ оплаты">
+          <button class="pay-toggle__option pay-toggle__option--active" type="button" data-payment="full" aria-pressed="true">Полная оплата</button>
+          <button class="pay-toggle__option" type="button" data-payment="deposit" aria-pressed="false">Депозит 25%</button>
+        </div>
+        <p class="cart__line"><span>Итого</span><span data-cart-total></span></p>
+        <p class="cart__line cart__line--due"><span>К оплате сейчас</span><span class="gradient-text" data-cart-due></span></p>
+        <a class="btn btn--primary btn--block" href="cabinet.html#checkout">Оформить заказ</a>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

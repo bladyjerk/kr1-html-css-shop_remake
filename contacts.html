@@ -1,66 +1,205 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Контактная информация учебного интернет-магазина.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Контакты — Tarnished Relics Vault</title>
+  <meta name="description" content="Адрес, телефон, часы работы и форма обратной связи магазина Tarnished Relics Vault.">
+  <meta property="og:title" content="Контакты — Tarnished Relics Vault">
+  <meta property="og:description" content="Адрес, телефон, часы работы и форма обратной связи магазина Tarnished Relics Vault.">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Учебный интернет-магазин">
-<meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
-<meta property="og:image" content="https://bladyjerk.github.io/kr1-html-css-shop/images/preview.jpg">
-  <title>Контакты — Учебный интернет-магазин</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/features.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
+  <script src="js/shop.js" defer></script>
 </head>
-<body>
-<header class="header">
-    <div class="header__container">
-        <a href="index.html" class="logo">ShopProject</a>
-        <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
-                <li class="nav__item"><a href="catalog.html" class="nav__link">Каталог</a></li>
-                <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
-                <li class="nav__item"><a href="#advantages" class="nav__link">Преимущества</a></li>
-                <li class="nav__item"><a href="#popular" class="nav__link">Популярные товары</a></li>
-                <li class="nav__item"><a href="#contacts" class="nav__link">Обратная связь</a></li>
-            </ul>
-        </nav>
+<body class="page" data-page="contacts">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="logo" href="index.html" aria-label="Tarnished Relics — на главную">
+        <span class="logo__mark"><span class="logo__letters">TR</span></span>
+        <span class="logo__text">Tarnished Relics</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+        <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="about.html">О нас</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="contacts.html" aria-current="page">Контакты</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="cabinet.html">Кабинет</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <button class="icon-btn" type="button" data-cart-open aria-label="Корзина">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+          <span class="icon-btn__badge" data-cart-count hidden>0</span>
+        </button>
+        <button class="icon-btn site-header__burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Меню">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
     </div>
-</header>
+  </header>
 
-  <main>
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <a href="index.html">Главная</a>
-      <span>Контакты</span>
+  <main class="page__main">
+    <nav class="breadcrumbs container" aria-label="Хлебные крошки">
+      <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="index.html">Главная</a></li>
+        <li class="breadcrumbs__item" aria-current="page">Контакты</li>
+      </ol>
     </nav>
+    <div class="container">
+      <header class="page-head">
+        <p class="page-head__kicker">Контакты</p>
+        <h1 class="page-head__title gradient-text">Свяжитесь с нами</h1>
+        <p class="page-head__lead">Вопросы о статуях, предзаказах, доставке или сертификатах — напишите или позвоните, мы отвечаем в течение рабочего дня.</p>
+      </header>
 
-    <section class="section">
-      <h1>Контакты</h1>
-      <p>
-        Здесь размещается контактная информация учебного интернет-магазина.
-      </p>
+      <div class="contacts">
+        <section class="panel panel--frame frame" aria-label="Контактная информация">
+          <ul class="contact-list">
+            <li class="contact-list__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><p class="contact-list__label">Адрес</p><p>г. Москва, Реликвийный пер., д. 12</p></div></li>
+            <li class="contact-list__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><div><p class="contact-list__label">Телефон</p><a class="contact-list__link" href="tel:+74950000000">+7 (495) 000-00-00</a></div></li>
+            <li class="contact-list__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><p class="contact-list__label">Часы работы</p><p>Пн–Пт 10:00–19:00 · Сб 11:00–16:00 · Вс — выходной</p></div></li>
+            <li class="contact-list__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg><div><p class="contact-list__label">Email</p><a class="contact-list__link" href="mailto:hello@tarnishedrelics.example">hello@tarnishedrelics.example</a></div></li>
+          </ul>
+          <div class="panel__divider">
+            <p class="contact-list__label">Мы в соцсетях</p>
+            <div class="panel__socials">
+              <a class="btn btn--outline btn--small" href="https://t.me/tarnished_relics" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4 18-7z"/></svg> Telegram</a>
+              <a class="btn btn--outline btn--small" href="https://vk.com/tarnished_relics" target="_blank" rel="noopener noreferrer">VK</a>
+            </div>
+          </div>
+        </section>
 
-      <ul>
-        <li>Телефон: +7 (900) 000-00-00</li>
-        <li>E-mail: info@example.com</li>
-        <li>Адрес: г. Москва, учебный проект</li>
-      </ul>
-    </section>
+        <section class="panel" aria-labelledby="form-title">
+          <h2 class="panel__title gradient-text" id="form-title">Написать нам</h2>
+          <form class="form panel__body" action="#" novalidate data-contact-form>
+            <label class="form__label">ФИО
+              <input class="form__input" type="text" name="name" autocomplete="name">
+              <span class="form__error" data-error-for="name"></span>
+            </label>
+            <label class="form__label">Email
+              <input class="form__input" type="email" name="email" autocomplete="email">
+              <span class="form__error" data-error-for="email"></span>
+            </label>
+            <label class="form__label">Сообщение
+              <textarea class="form__input form__input--area" name="message" rows="6"></textarea>
+              <span class="form__error" data-error-for="message"></span>
+            </label>
+            <button class="btn btn--primary btn--block" type="submit">Отправить</button>
+            <div class="form__success" data-form-success role="status" hidden>
+              <p class="form__success-title">Сообщение отправлено</p>
+              <p>Мы ответим в течение рабочего дня.</p>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
 
-    <section class="section" id="feedback">
-      <h2>Обратная связь</h2>
-      <p>
-        Для отправки заявки используйте форму в модальном окне на главной странице.
-      </p>
-      <a class="button" href="index.html#contacts">Перейти к форме</a>
+    <section class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="section__kicker">FAQ</p>
+          <h2 class="section__title gradient-text" id="faq-title">Частые вопросы</h2>
+        </div>
+        <div class="faq">
+          <details class="faq__item" data-reveal>
+            <summary class="faq__question">Что входит в комплект?</summary>
+            <p class="faq__answer">Каждая статуя нумеруется и поставляется с латунной табличкой и сертификатом подлинности. Отправляем в деревянном ящике с поролоном.</p>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary class="faq__question">Как работает предзаказ?</summary>
+            <p class="faq__answer">Для предзаказа достаточно депозита 25%. Способ оплаты — полная сумма или депозит — выбирается в корзине.</p>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary class="faq__question">Как отследить заказ?</summary>
+            <p class="faq__answer">Номер заказа начинается с TRV-. Введите его в разделе «Кабинет» — вы увидите, на каком этапе находится статуя.</p>
+          </details>
+          <details class="faq__item" data-reveal>
+            <summary class="faq__question">Какие есть способы доставки?</summary>
+            <p class="faq__answer">Курьером в деревянном ящике или в пункт выдачи. Способ выбирается при оформлении заказа.</p>
+          </details>
+        </div>
+      </div>
     </section>
   </main>
 
- <footer class="footer" id="contacts">
-    <div class="footer__container">
-      <p class="footer__copyright">&copy; 2026 Учебный проект. Все права защищены.</p>
-      <p class="footer__discipline">Дисциплина: Фронтенд и бэкенд разработка</p>
+  <footer class="site-footer">
+    <div class="site-footer__grid container">
+      <div class="site-footer__col">
+        <a class="logo" href="index.html" aria-label="Tarnished Relics — на главную">
+          <span class="logo__mark"><span class="logo__letters">TR</span></span>
+          <span class="logo__text logo__text--visible">Tarnished Relics</span>
+        </a>
+        <p class="site-footer__text">Статуи Elden Ring музейного уровня: ручная роспись, нумерация и доставка в деревянных ящиках.</p>
+      </div>
+      <nav class="site-footer__col" aria-label="Разделы">
+        <h2 class="site-footer__title gradient-text">Разделы</h2>
+        <ul class="site-footer__list">
+          <li><a class="site-footer__link" href="index.html">Главная</a></li>
+          <li><a class="site-footer__link" href="catalog.html">Каталог</a></li>
+          <li><a class="site-footer__link" href="about.html">О нас</a></li>
+          <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          <li><a class="site-footer__link" href="cabinet.html">Кабинет</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <h2 class="site-footer__title gradient-text">Контакты</h2>
+        <ul class="site-footer__list">
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>г. Москва, Реликвийный пер., д. 12</span></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><a class="site-footer__link" href="tel:+74950000000">+7 (495) 000-00-00</a></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Пн–Пт 10:00–19:00 · Сб 11:00–16:00 · Вс — выходной</span></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg><a class="site-footer__link" href="mailto:hello@tarnishedrelics.example">hello@tarnishedrelics.example</a></li>
+          <li class="site-footer__item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4 18-7z"/></svg><a class="site-footer__link" href="https://t.me/tarnished_relics" target="_blank" rel="noopener noreferrer">Telegram: @tarnished_relics</a></li>
+          <li class="site-footer__item"><span class="site-footer__vk" aria-hidden="true">VK</span><a class="site-footer__link" href="https://vk.com/tarnished_relics" target="_blank" rel="noopener noreferrer">VK: vk.com/tarnished_relics</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="site-footer__bottom-inner container">
+        <p>© 2026 Tarnished Relics Vault. Все права защищены.</p>
+        <p>Фанатский концепт магазина. Elden Ring © FromSoftware / Bandai Namco.</p>
+      </div>
     </div>
   </footer>
+
+  <button class="back-to-top" type="button" data-back-to-top aria-label="Вернуться наверх" title="Вернуться наверх">
+    <svg class="back-to-top__icon" viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M6 24C3 11 13 3 24 3s21 8 18 21" stroke-width="1.3" opacity="0.55"/>
+      <path d="M12 22C11 14 17 8 24 8s13 6 12 14" stroke-width="1.1" opacity="0.4"/>
+      <path d="M24 43c1-6 0-11 0-17" stroke-width="2.8"/>
+      <path d="M24 43c-4 0-7 1-11 3M24 43c4 0 7 1 11 3M24 43c-1 2-1 3-1 4M24 43c1 2 1 3 1 4" stroke-width="1.6"/>
+      <path d="M24 28c-4-4-10-5-15-11M24 28c4-4 10-5 15-11" stroke-width="1.9"/>
+      <path d="M24 25c-2-6-5-10-8-17M24 25c2-6 5-10 8-17M24 24V6" stroke-width="1.9"/>
+      <path d="M16 23c-3 0-5-1-7-3M32 23c3 0 5-1 7-3M19 15c-3 0-5-2-6-4M29 15c3 0 5-2 6-4" stroke-width="1.2"/>
+      <g fill="currentColor" stroke="none"><circle cx="9" cy="17" r="1.3"/><circle cx="39" cy="17" r="1.3"/><circle cx="16" cy="8" r="1.3"/><circle cx="32" cy="8" r="1.3"/><circle cx="24" cy="5.5" r="1.5"/></g>
+    </svg>
+  </button>
+
+  <dialog class="cart" data-cart aria-labelledby="cart-title">
+    <div class="cart__inner">
+      <header class="cart__header">
+        <h2 class="cart__title gradient-text" id="cart-title">Корзина</h2>
+        <button class="cart__close" type="button" data-cart-close aria-label="Закрыть корзину"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </header>
+      <p class="cart__empty" data-cart-empty>Ваша корзина пуста.</p>
+      <ul class="cart__list" data-cart-list></ul>
+      <div class="cart__footer" data-cart-footer hidden>
+        <div class="pay-toggle" role="group" aria-label="Способ оплаты">
+          <button class="pay-toggle__option pay-toggle__option--active" type="button" data-payment="full" aria-pressed="true">Полная оплата</button>
+          <button class="pay-toggle__option" type="button" data-payment="deposit" aria-pressed="false">Депозит 25%</button>
+        </div>
+        <p class="cart__line"><span>Итого</span><span data-cart-total></span></p>
+        <p class="cart__line cart__line--due"><span>К оплате сейчас</span><span class="gradient-text" data-cart-due></span></p>
+        <a class="btn btn--primary btn--block" href="cabinet.html#checkout">Оформить заказ</a>
+      </div>
+    </div>
+  </dialog>
 </body>
 </html>

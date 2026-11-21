@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Tarnished Relics Vault — анимации и эффекты (БЭМ)
+   Подключается после style.css. Логика эффектов — в js/main.js.
+   1. Появление при прокрутке    4. Искры в баннере
+   2. Карточки: наведение        5. Корзина и кнопка «Наверх»
+   3. Кнопки и ссылки            6. Отключение анимаций
+   ========================================================================== */
+
+/* 1. Появление при прокрутке --------------------------------------------- */
+@keyframes reveal {
+  from { opacity: 0; translate: 0 28px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* Без JS элементы остаются видимыми (класс .js ставится в <head>) */
+.js [data-reveal]:not(.is-visible) { opacity: 0; }
+.js [data-reveal].is-visible { animation: reveal 0.85s cubic-bezier(0.22, 0.8, 0.3, 1) calc(var(--i, 0) * 90ms) backwards; }
+
+/* 2. Карточки: наведение -------------------------------------------------- */
+/* Общий механизм: JS пишет координаты курсора в --mx / --my */
+[data-spotlight] {
+  position: relative;
+  transition: translate 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease, transform 0.25s ease-out, background-color 0.45s ease;
+  will-change: transform;
+}
+
+/* Градиент, следующий за курсором */
+[data-spotlight]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 30%), oklch(0.82 0.14 85 / 0.32), transparent 62%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+/* Золотая градиентная рамка по контуру */
+[data-spotlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: 1px;
+  background: linear-gradient(135deg, oklch(0.82 0.12 84), transparent 40%, transparent 60%, oklch(0.6 0.12 60));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+[data-spotlight]:hover { translate: 0 -6px; box-shadow: var(--shadow-gold); }
+[data-spotlight]:hover::before,
+[data-spotlight]:hover::after { opacity: 1; }
+
+.product-card:hover { background-image: linear-gradient(180deg, var(--color-surface) 40%, oklch(0.94 0.05 86)); }
+.product-card__img { transition: transform 0.9s cubic-bezier(0.22, 0.8, 0.3, 1), filter 0.6s; }
+.product-card:hover .product-card__img { transform: scale(1.07); filter: saturate(1.12); }
+.product-card__title-link { background: var(--gradient-gold) no-repeat left bottom / 0% 1px; transition: background-size 0.5s ease, color 0.3s; }
+.product-card:hover .product-card__title-link { background-size: 100% 1px; }
+
+.feature, .step, .material, .scale-card, .stat, .studios__item { transition: translate 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease, background-color 0.45s ease; }
+.studios__item:hover { translate: 0 -3px; border-color: var(--color-primary); background: var(--gradient-gold); color: var(--color-primary-contrast); }
+.feature:hover .feature__mark,
+.step:hover .step__mark { background: var(--gradient-gold); color: var(--color-primary-contrast); }
+.feature__mark, .step__mark { transition: background 0.4s, color 0.4s, transform 0.6s; }
+.feature:hover .feature__mark,
+.step:hover .step__mark { transform: rotate(225deg); }
+.feature:hover .feature__mark > *,
+.step:hover .step__mark > * { transform: rotate(-225deg); }
+
+/* Блоки с золотой рамкой сохраняют внутреннюю линию при наведении */
+.frame[data-spotlight]:hover {
+  box-shadow: inset 0 0 0 4px var(--color-bg), inset 0 0 0 5px color-mix(in oklab, var(--color-primary) 45%, transparent), var(--shadow-gold);
+}
+
+/* 3. Кнопки и ссылки ------------------------------------------------------ */
+.btn { transition: background-position 0.7s ease, background-size 0.5s ease, color 0.35s ease, box-shadow 0.35s ease, translate 0.3s ease, border-color 0.35s; }
+.btn:hover { translate: 0 -2px; }
+.btn:active { translate: 0 0; }
+.btn--primary:hover { background-position: 100% 0; box-shadow: 0 14px 44px -12px oklch(0.6 0.13 76 / 0.7); }
+.btn--outline:hover { background-size: 100% 100%; color: var(--color-primary-contrast); border-color: transparent; }
+.gradient-text { transition: background-position 1s ease; }
+.product-card:hover .gradient-text,
+.stat:hover .gradient-text,
+.promo:hover .gradient-text { background-position: 100% 0; }
+
+/* 4. Искры в баннере ------------------------------------------------------ */
+@keyframes ember-rise {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: translate3d(var(--drift, 20px), -110vh, 0); opacity: 0; }
+}
+.embers { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.embers__spark {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: var(--color-glow);
+  box-shadow: 0 0 8px 2px var(--color-glow);
+  animation: ember-rise linear infinite;
+}
+
+@keyframes hero-in { from { opacity: 0; translate: 0 20px; } to { opacity: 1; translate: 0 0; } }
+.hero__inner > * { animation: hero-in 0.9s ease-out backwards; }
+.hero__inner > :nth-child(2) { animation-delay: 0.12s; }
+.hero__inner > :nth-child(3) { animation-delay: 0.24s; }
+.hero__inner > :nth-child(4) { animation-delay: 0.36s; }
+
+/* 5. Корзина и кнопка «Наверх» -------------------------------------------- */
+@keyframes cart-in { from { translate: 100% 0; } to { translate: 0 0; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.cart[open] { animation: cart-in 0.4s cubic-bezier(0.22, 0.8, 0.3, 1); }
+.cart[open]::backdrop { animation: fade-in 0.4s ease; }
+
+.img-fallback, .is-broken { opacity: 0; }
+
+.back-to-top {
+  --color-primary: oklch(0.82 0.12 84);
+  --color-glow: oklch(0.88 0.13 88);
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid color-mix(in oklab, var(--color-primary) 60%, transparent);
+  border-radius: 50%;
+  background: oklch(0.2 0.02 60);
+  color: var(--color-primary);
+  box-shadow: 0 0 40px -10px oklch(0.82 0.12 84 / 0.55);
+  opacity: 0;
+  translate: 0 1.5rem;
+  pointer-events: none;
+  transition: opacity 0.5s, translate 0.5s, border-color 0.3s, color 0.3s;
+}
+.back-to-top--visible { opacity: 1; translate: 0 0; pointer-events: auto; }
+.back-to-top--visible:hover { translate: 0 -4px; border-color: var(--color-primary); color: var(--color-glow); }
+.back-to-top__icon { width: 2.25rem; height: 2.25rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 6px var(--color-glow)); transition: scale 0.5s; }
+.back-to-top:hover .back-to-top__icon { scale: 1.1; }
+
+/* 6. Отключение анимаций -------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .embers { display: none; }
+}
