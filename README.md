@@ -1,6 +1,7 @@
 # Tarnished Relics Vault — интернет-магазин статуй Elden Ring
 
 Учебный frontend-проект: многостраничный сайт на чистых HTML, CSS (БЭМ) и vanilla JS.
+Структура и подход повторяют проект [modforge](https://github.com/bladyjerk/modforge).
 
 ## Структура проекта
 
@@ -19,7 +20,8 @@
 
 ## Фотографии фигурок
 
-Файлы нужно положить в `images/figures/` под именами `malenia-1.jpg … messmer-4.jpg` (по 4 фото на фигурку:
+В исходном проекте фото хранились как ссылки (`*.asset.json`), поэтому сами файлы нужно
+положить в `images/figures/` под именами `malenia-1.jpg … messmer-4.jpg` (по 4 фото на фигурку:
 malenia, radahn, godfrey, mohg, maliketh, messmer). Пока файлов нет, карточки показывают тёмный фон.
 
 ## БЭМ
