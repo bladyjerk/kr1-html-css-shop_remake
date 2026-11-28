@@ -207,6 +207,8 @@
     thumbs.forEach((thumb) => thumb.addEventListener('click', () => {
       main.classList.remove('is-broken');
       main.src = thumb.dataset.src;
+      const thumbImg = thumb.querySelector('img');
+      if (thumbImg) main.alt = thumbImg.alt;
       thumbs.forEach((t) => t.classList.toggle('gallery__thumb--active', t === thumb));
     }));
 

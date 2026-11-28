@@ -205,8 +205,8 @@ button { cursor: pointer; background: none; border: 0; padding: 0; }
 .logo__letters { transform: rotate(-45deg); font-family: var(--font-display); font-size: 0.85rem; }
 .logo:hover .logo__letters { transform: rotate(-225deg); }
 .logo__letters, .logo__text { background: var(--gradient-gold); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.logo__text--visible { display: block !important; }
-.logo__text { display: none; font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.25em; text-transform: uppercase; }
+.logo__text--visible { display: block !important; position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+.logo__text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.25em; text-transform: uppercase; }
 
 .site-nav {
   display: none;
@@ -689,7 +689,7 @@ button { cursor: pointer; background: none; border: 0; padding: 0; }
 }
 
 @media (min-width: 1280px) {
-  .logo__text { display: block; }
+  .logo__text { display: block; position: static; width: auto; height: auto; overflow: visible; clip: auto; }
 }
 
 @media (max-width: 1023px) {
